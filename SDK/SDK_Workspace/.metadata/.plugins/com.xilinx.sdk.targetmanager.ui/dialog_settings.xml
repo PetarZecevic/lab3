@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item value="D:\ra184-2016\lab3\SDK\SDK_Workspace\hello_world\Debug\hello_world.elf" key="lab3_hw_platform-microblaze_0-initElf"/>
-	<item value="D:\ra184-2016\lab3\SDK\SDK_Workspace\lab3_hw_platform\system_bd.bmm" key="lab3_hw_platform-bmmFile"/>
-	<item value="D:\ra184-2016\lab3\SDK\SDK_Workspace\lab3_hw_platform\system.bit" key="lab3_hw_platform-bitFile"/>
+	<item value="bootloop" key="lab3_hw_platform-microblaze_0-initElf"/>
+	<item value="D:\folderi_sa_D\RA43-2016\lab3\SDK\SDK_Workspace\lab3_hw_platform\system_bd.bmm" key="lab3_hw_platform-bmmFile"/>
+	<item value="D:\folderi_sa_D\RA43-2016\lab3\SDK\SDK_Workspace\lab3_hw_platform\system.bit" key="lab3_hw_platform-bitFile"/>
 </section>
