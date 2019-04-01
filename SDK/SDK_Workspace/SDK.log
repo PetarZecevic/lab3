@@ -76,3 +76,6 @@ Failed to Scan JTAG Chain
  
 12:20:37.954 INFO  - FPGA configured successfully with bitstream "D:/folderi_sa_D/RA43-2016/lab3/SDK/SDK_Workspace/lab3_hw_platform/download.bit" 
 12:22:04.624 ERROR - Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  
+10:50:55.620 INFO  - Processing command line option -hwspec D:\folderi_sa_D\RA43-2016\lab3\SDK\SDK_Export\hw\system.xml. 
+10:55:29.715 INFO  - FPGA configured successfully with bitstream "D:/folderi_sa_D/RA43-2016/lab3/SDK/SDK_Workspace/lab3_hw_platform/download.bit" 
+12:07:14.817 ERROR - Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  

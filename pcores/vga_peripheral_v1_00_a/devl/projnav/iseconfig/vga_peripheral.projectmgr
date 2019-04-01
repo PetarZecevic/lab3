@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <!--This is an ISE project configuration file.-->
 <!--It holds project specific layout data for the projectmgr plugin.-->
 <!--Copyright (c) 1995-2009 Xilinx, Inc.  All rights reserved.-->
@@ -7,7 +7,9 @@
    <ItemView engineview="SynthesisOnly" guiview="Source" compilemode="AutoCompile" >
       <ClosedNodes>
          <ClosedNodesVersion>2</ClosedNodesVersion>
-         <ClosedNode>/Unassigned User Library Modules</ClosedNode>
+         <ClosedNode>/Unassigned User Library Modules/or_gate128 - imp</ClosedNode>
+         <ClosedNode>/Unassigned User Library Modules/vga_peripheral - IMP/AXI_LITE_IPIF_I - axi_lite_ipif - imp</ClosedNode>
+         <ClosedNode>/Unassigned User Library Modules/vga_peripheral - IMP/USER_LOGIC_I - user_logic - IMP</ClosedNode>
          <ClosedNode>/vga_peripheral - IMP D:|folderi_sa_D|RA43-2016|lab3|pcores|vga_peripheral_v1_00_a|hdl|vhdl|vga_peripheral.vhd/AXI_LITE_IPIF_I - axi_lite_ipif - imp/I_SLAVE_ATTACHMENT - slave_attachment - imp</ClosedNode>
          <ClosedNode>/vga_peripheral - IMP D:|folderi_sa_D|RA43-2016|lab3|pcores|vga_peripheral_v1_00_a|hdl|vhdl|vga_peripheral.vhd/USER_LOGIC_I - user_logic - IMP/vga_top_i - vga_top - rtl</ClosedNode>
       </ClosedNodes>
@@ -30,13 +32,13 @@
          <ClosedNode>User Constraints</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem></SelectedItem>
+         <SelectedItem>Synthesize - XST</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000018e000000010000000100000000000000000000000064ffffffff0000008100000000000000010000018e0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem>Synthesize - XST</CurrentItem>
    </ItemView>
    <ItemView guiview="File" >
       <ClosedNodes>
@@ -70,13 +72,13 @@
          <ClosedNode>Design Utilities</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem></SelectedItem>
+         <SelectedItem/>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000018e000000010000000100000000000000000000000064ffffffff0000008100000000000000010000018e0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem/>
    </ItemView>
    <SourceProcessView>000000ff00000000000000020000011b0000011b01000000050100000002</SourceProcessView>
    <CurrentView>Implementation</CurrentView>

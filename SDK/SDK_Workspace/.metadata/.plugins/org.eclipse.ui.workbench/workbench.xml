@@ -37,9 +37,9 @@
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="helloworld.c" partName="helloworld.c" path="D:/folderi_sa_D/RA43-2016/lab3/SDK/SDK_Workspace/hello_world/src/helloworld.c" title="helloworld.c" tooltip="hello_world/src/helloworld.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/hello_world/src/helloworld.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1545" selectionTopPixel="156"/>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="helloworld.c" partName="helloworld.c" path="D:/folderi_sa_D/RA43-2016/lab3/SDK/SDK_Workspace/vga_ctrl/src/helloworld.c" title="helloworld.c" tooltip="vga_ctrl/src/helloworld.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/vga_ctrl/src/helloworld.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1399" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -186,6 +186,7 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.xilinx.sdk.sw.MSSEditor" path="/hello_world_bsp/system.mss"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hello_world/src/helloworld.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.xilinx.sdk.sw.MSSEditor" path="/vga_ctrl_bsp/system.mss"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/vga_ctrl/src/helloworld.c"/>
 </editors>
 <item historyLabel="system.xml" index="0"/>
 <item historyLabel="system.mss" index="1"/>
@@ -220,7 +221,10 @@
 <position info="not_deleted" x="0" y="0"/>
 </item>
 <item historyLabel="system.mss" index="3"/>
-<item active="true" historyLabel="helloworld.c" index="2">
+<item historyLabel="helloworld.c" index="2">
+<position info="not_deleted" x="1479" y="0"/>
+</item>
+<item active="true" historyLabel="helloworld.c" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
@@ -240,6 +244,9 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="helloworld.c" tooltip="vga_ctrl/src/helloworld.c">
+<persistable path="/vga_ctrl/src/helloworld.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.xilinx.sdk.sw.MSSEditor" name="system.mss" tooltip="vga_ctrl_bsp/system.mss">
 <persistable path="/vga_ctrl_bsp/system.mss"/>
 </file>

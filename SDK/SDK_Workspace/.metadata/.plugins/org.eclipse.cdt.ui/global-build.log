@@ -376,3 +376,9 @@ make -k all
 12:20:39 **** Auto Build of project vga_ctrl_bsp ****
 make -k all 
 'Finished building libraries'
+10:55:30 **** Auto Build of project hello_world_bsp ****
+make -k all 
+'Finished building libraries'
+10:55:31 **** Auto Build of project vga_ctrl_bsp ****
+make -k all 
+'Finished building libraries'

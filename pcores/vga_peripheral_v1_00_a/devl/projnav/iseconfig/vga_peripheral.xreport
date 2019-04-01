@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2019-03-28T10:58:43</DateModified>
+  <DateModified>2019-04-01T11:06:51</DateModified>
   <ModuleName>vga_peripheral</ModuleName>
-  <SummaryTimeStamp>Unknown</SummaryTimeStamp>
+  <SummaryTimeStamp>2019-04-01T11:05:50</SummaryTimeStamp>
   <SavedFilePath>D:/folderi_sa_D/RA43-2016/lab3/pcores/vga_peripheral_v1_00_a/devl/projnav/iseconfig/vga_peripheral.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>D:/folderi_sa_D/RA43-2016/lab3/pcores/vga_peripheral_v1_00_a/devl/projnav</ImplementationReportsDirectory>
-  <DateInitialized>2019-03-28T10:58:43</DateInitialized>
+  <ImplementationReportsDirectory>D:/folderi_sa_D/RA43-2016/lab3/pcores/vga_peripheral_v1_00_a/devl/projnav\</ImplementationReportsDirectory>
+  <DateInitialized>2019-04-01T11:06:50</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
  <body>

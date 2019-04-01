@@ -1,0 +1,2 @@
+xst -intstyle ise -ifn "D:/folderi_sa_D/RA43-2016/lab3/pcores/vga_peripheral_v1_00_a/devl/projnav/user_logic.xst" -ofn "D:/folderi_sa_D/RA43-2016/lab3/pcores/vga_peripheral_v1_00_a/devl/projnav/user_logic.syr" 
+xst -intstyle ise -ifn "D:/folderi_sa_D/RA43-2016/lab3/pcores/vga_peripheral_v1_00_a/devl/projnav/user_logic.xst" -ofn "D:/folderi_sa_D/RA43-2016/lab3/pcores/vga_peripheral_v1_00_a/devl/projnav/user_logic.syr" 

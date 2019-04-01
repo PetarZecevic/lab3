@@ -323,6 +323,9 @@ begin
 		reset_n_i      => reset_n_i,
 		direct_mode_i => direct_mode_i,
 		display_mode_i => display_mode_i,
+		addr => ipif_Bus2IP_Addr,
+		rnw => ipif_Bus2IP_RNW,
+		cs => ipif_Bus2IP_CS(0),
 		-- vga
 		vga_hsync_o    => vga_hsync_o,
 		vga_vsync_o    => vga_vsync_o,

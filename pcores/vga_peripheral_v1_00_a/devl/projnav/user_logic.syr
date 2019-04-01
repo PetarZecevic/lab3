@@ -12,7 +12,7 @@ Total CPU time to Xst completion: 0.07 secs
 Total REAL time to Xst completion: 0.00 secs
 Total CPU time to Xst completion: 0.07 secs
  
---> Reading design: vga_peripheral.prj
+--> Reading design: user_logic.prj
 
 TABLE OF CONTENTS
   1) Synthesis Options Summary
@@ -40,16 +40,16 @@ TABLE OF CONTENTS
 *                      Synthesis Options Summary                        *
 =========================================================================
 ---- Source Parameters
-Input File Name                    : "vga_peripheral.prj"
+Input File Name                    : "user_logic.prj"
 Ignore Synthesis Constraint File   : NO
 
 ---- Target Parameters
-Output File Name                   : "vga_peripheral"
+Output File Name                   : "user_logic"
 Output Format                      : NGC
 Target Device                      : xc6slx45-2-fgg676
 
 ---- Source Options
-Top Module Name                    : vga_peripheral
+Top Module Name                    : user_logic
 Automatic FSM Extraction           : YES
 FSM Encoding Algorithm             : Auto
 Safe Implementation                : No
@@ -105,12 +105,6 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/proc_common_pkg.vhd" into library proc_common_v3_00_a
-Parsing package <proc_common_pkg>.
-Parsing package body <proc_common_pkg>.
-Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/family_support.vhd" into library proc_common_v3_00_a
-Parsing package <family_support>.
-Parsing package body <family_support>.
 Parsing VHDL file "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\vga_sync.vhd" into library work
 Parsing entity <vga_sync>.
 Parsing architecture <rtl> of entity <vga_sync>.
@@ -126,12 +120,6 @@ Parsing architecture <xilinx> of entity <dcm25mhz>.
 Parsing VHDL file "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\dcm108MHz.vhd" into library work
 Parsing entity <dcm108MHz>.
 Parsing architecture <xilinx> of entity <dcm108mhz>.
-Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/pselect_f.vhd" into library proc_common_v3_00_a
-Parsing entity <pselect_f>.
-Parsing architecture <imp> of entity <pselect_f>.
-Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/ipif_pkg.vhd" into library proc_common_v3_00_a
-Parsing package <ipif_pkg>.
-Parsing package body <ipif_pkg>.
 Parsing VHDL file "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\vga.vhd" into library work
 Parsing entity <vga>.
 Parsing architecture <rtl> of entity <vga>.
@@ -144,29 +132,43 @@ Parsing architecture <arc_graphics_mem> of entity <graphics_mem>.
 Parsing VHDL file "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\char_rom.vhd" into library work
 Parsing entity <char_rom>.
 Parsing architecture <Behavioral> of entity <char_rom>.
-Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/counter_f.vhd" into library proc_common_v3_00_a
-Parsing entity <counter_f>.
-Parsing architecture <imp> of entity <counter_f>.
-Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/address_decoder.vhd" into library axi_lite_ipif_v1_01_a
-Parsing entity <address_decoder>.
-Parsing architecture <IMP> of entity <address_decoder>.
 Parsing VHDL file "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\vga_top.vhd" into library work
 Parsing entity <vga_top>.
 Parsing architecture <rtl> of entity <vga_top>.
-Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/slave_attachment.vhd" into library axi_lite_ipif_v1_01_a
-Parsing entity <slave_attachment>.
-Parsing architecture <imp> of entity <slave_attachment>.
+Parsing VHDL file "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\reg.vhd" into library work
+Parsing entity <reg>.
+Parsing architecture <arch_reg> of entity <reg>.
+Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/proc_common_pkg.vhd" into library proc_common_v3_00_a
+Parsing package <proc_common_pkg>.
+Parsing package body <proc_common_pkg>.
 Parsing VHDL file "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" into library vga_peripheral_v1_00_a
 Parsing entity <user_logic>.
+ERROR:HDLCompiler:69 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 110: <ipif_ard_addr_range_array> is not declared.
+ERROR:HDLCompiler:722 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 110: Prefix of LENGTH attribute should be an array or array (sub)type
+ERROR:HDLCompiler:854 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 84: Unit <user_logic> ignored due to previous errors.
 Parsing architecture <IMP> of entity <user_logic>.
-ERROR:HDLCompiler:1728 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 352: Type error near slv_reg2 ; current type std_logic_vector; expected type std_logic
-ERROR:HDLCompiler:854 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 150: Unit <imp> ignored due to previous errors.
-VHDL file D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd ignored due to errors
+ERROR:HDLCompiler:374 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 150: Entity <user_logic> is not yet compiled.
+ERROR:HDLCompiler:69 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 153: <natural> is not declared.
+ERROR:HDLCompiler:69 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 155: <res_num> is not declared.
+ERROR:HDLCompiler:24 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 155: "**" expects 2 arguments
+ERROR:HDLCompiler:845 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 157: Type of aggregate cannot be determined without context ; 0 visible types match here
+ERROR:HDLCompiler:845 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 158: Type of aggregate cannot be determined without context ; 0 visible types match here
+ERROR:HDLCompiler:845 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 159: Type of aggregate cannot be determined without context ; 0 visible types match here
+ERROR:HDLCompiler:845 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 160: Type of aggregate cannot be determined without context ; 0 visible types match here
+ERROR:HDLCompiler:69 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 162: <natural> is not declared.
+ERROR:HDLCompiler:69 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 163: <natural> is not declared.
+ERROR:HDLCompiler:69 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 164: <natural> is not declared.
+ERROR:HDLCompiler:69 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 165: <natural> is not declared.
+ERROR:HDLCompiler:69 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 169: <natural> is not declared.
+ERROR:HDLCompiler:69 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 170: <natural> is not declared.
+ERROR:HDLCompiler:69 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 171: <natural> is not declared.
+ERROR:HDLCompiler:69 - "D:\folderi_sa_D\RA43-2016\lab3\pcores\vga_peripheral_v1_00_a\hdl\vhdl\user_logic.vhd" Line 172: <natural> is not declared.
+Sorry, too many errors..
 --> 
 
-Total memory usage is 222516 kilobytes
+Total memory usage is 218292 kilobytes
 
-Number of errors   :    2 (   0 filtered)
+Number of errors   :   19 (   0 filtered)
 Number of warnings :    0 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

@@ -105,6 +105,9 @@ entity user_logic is
     reset_n_i      : in  std_logic;
 	 direct_mode_i : in std_logic;
 	 display_mode_i : in std_logic_vector(1 downto 0);
+	 addr			 : in std_logic_vector(31 downto 0);
+	 rnw				 : in std_logic;
+	 cs				 : in std_logic;
     -- vga
     vga_hsync_o    : out std_logic;
     vga_vsync_o    : out std_logic;
@@ -296,19 +299,44 @@ architecture IMP of user_logic is
   --signal pixel_s : std_logic_vector(13 downto 0);
   signal pixel_next_s : std_logic_vector(19 downto 0);
   
+  -- AXI bus signals
+  signal unit_id : std_logic_vector(1 downto 0);
+  signal unit_addr : std_logic_vector(21 downto 0);
+  signal global_we : std_logic;
+  signal reg_we : std_logic;
+  
   ------------------------------------------
   -- Signals for user logic slave model s/w accessible register example
   ------------------------------------------
-  signal slv_reg0                       : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
-  signal slv_reg_write_sel              : std_logic_vector(0 to 0);
+  signal slv_reg0                       : std_logic_vector(0 downto 0);
+  signal slv_reg_write_sel              : std_logic_vector(2 downto 0);
   signal slv_reg_read_sel               : std_logic_vector(0 to 0);
   signal slv_ip2bus_data                : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal slv_read_ack                   : std_logic;
   signal slv_write_ack                  : std_logic;
+  
 
+  signal slv_reg1                     : std_logic_vector(1 downto 0);
+  signal slv_reg2                     : std_logic_vector(0 downto 0);
+  signal slv_reg3                     : std_logic_vector(3 downto 0);
+  signal slv_reg4                     : std_logic_vector(23 downto 0);
+  signal slv_reg5                     : std_logic_vector(23 downto 0);
+  signal slv_reg6                     : std_logic_vector(23 downto 0);
 begin
-
+	
   --USER logic implementation added here
+	
+	unit_id <= addr(25 downto 24);
+	unit_addr <= addr(23 downto 2);
+	
+	-- Chose peripherial
+	global_we <= cs and not rnw;
+	
+	reg_we <= global_we when unit_id = "00" else '0';
+	char_we <= global_we when unit_id = "01" else '0';
+	pixel_we <= global_we when unit_id = "10" else '0';
+	
+	
 	-- calculate message lenght from font size
   message_lenght <= conv_std_logic_vector(MEM_SIZE/64, MEM_ADDR_WIDTH)when (font_size = 3) else -- note: some resolution with font size (32, 64)  give non integer message lenght (like 480x640 on 64 pixel font size) 480/64= 7.5
                     conv_std_logic_vector(MEM_SIZE/16, MEM_ADDR_WIDTH)when (font_size = 2) else
@@ -321,12 +349,13 @@ begin
   --direct_mode <= '0';
   --display_mode     <= "01";  -- 01 - text mode, 10 - graphics mode, 11 - text & graphics
   
-  font_size        <= x"1";
-  show_frame       <= '1';
-  foreground_color <= x"FFFFFF";
-  background_color <= x"000000";
-  frame_color      <= x"FF0000";
-
+  show_frame       <= slv_reg2;	
+  font_size        <= slv_reg3;
+  foreground_color <= slv_reg4;
+  background_color <= slv_reg5;
+  frame_color      <= slv_reg6;
+	
+  
   clk5m_inst : ODDR2
   generic map(
     DDR_ALIGNMENT => "NONE",  -- Sets output alignment to "NONE","C0", "C1" 
@@ -395,65 +424,6 @@ begin
     green_o            => green_o,
     blue_o             => blue_o     
   );
-  
-  address_counter : reg
-	generic map(
-		WIDTH => 14,
-		RST_INIT => 0
-	)
-	port map(
-		i_clk => pix_clock_s,
-		in_rst => vga_rst_n_s,
-		i_d => char_address_next,
-		o_q => char_address
-	);
-	
-	time_counter : reg
-	generic map(
-		WIDTH => 20,
-		RST_INIT => 0
-	)
-	port map(
-		i_clk => pix_clock_s,
-		in_rst => vga_rst_n_s,
-		i_d => time_next_s,
-		o_q => time_s
-	);
-	
-	offset_counter : reg
-	generic map(
-		WIDTH => 14,
-		RST_INIT => 0
-	)
-	port map(
-		i_clk => pix_clock_s,
-		in_rst => vga_rst_n_s,
-		i_d => offset_next_s,
-		o_q => offset_s
-	);
-	
-	pixel_counter : reg
-	generic map(
-		WIDTH => 20,
-		RST_INIT => 0
-	)
-	port map(
-		i_clk => pix_clock_s,
-		in_rst => vga_rst_n_s,
-		i_d => pixel_next_s,
-		o_q => pixel_address
-	);
-	
-	
-	time_next_s <= time_s + 1 when time_s /= maxcnt_s else
-						conv_std_logic_vector(0, 20);
-	
-	val_o <= '1' when time_s = maxcnt_s else
-				'0';
-	
-	offset_next_s <= offset_s + 1 when val_o = '1' else
-						  conv_std_logic_vector(0, 14) when offset_s = maxoffset_s else
-						  offset_s;
 	
   -- na osnovu signala iz vga_top modula dir_pixel_column i dir_pixel_row realizovati logiku koja genereise
   --dir_red
@@ -479,42 +449,17 @@ begin
   
   -- offset and timer logic --
   
-  char_address_next <= char_address + 1 when char_address /= "01001011000000" else -- index za ekran
-						  conv_std_logic_vector(0, 14);
-  char_we <= '1';
-  
-  char_value <= conv_std_logic_vector(16,6) when char_address = 0+offset_s else
-					conv_std_logic_vector(5,6) when char_address = 1+offset_s else
-					conv_std_logic_vector(20,6) when char_address = 2+offset_s else
-					conv_std_logic_vector(1,6) when char_address = 3+offset_s else
-					conv_std_logic_vector(18,6) when char_address = 4+offset_s else
-					conv_std_logic_vector(18,6) when char_address = 6+offset_s else
-					conv_std_logic_vector(1,6) when char_address = 7+offset_s else
-					conv_std_logic_vector(4,6) when char_address = 8+offset_s else
-					conv_std_logic_vector(15,6) when char_address = 9+offset_s else
-					conv_std_logic_vector(22,6) when char_address = 10+offset_s else
-					conv_std_logic_vector(1,6) when char_address = 11+offset_s else
-					conv_std_logic_vector(14,6) when char_address = 12+offset_s else
-					conv_std_logic_vector(32,6);
+  char_address <= unit_addr(13 downto 0) when char_we = '1' else conv_std_logic_vector(0, 14);
+  char_value <= Bus2Ip_Data(5 downto 0) when char_we = '1' else conv_std_logic_vector(0, 6);
 					
   -- koristeci signale realizovati logiku koja pise po GRAPH_MEM
   --pixel_address
   --pixel_value
   --pixel_we
-  pixel_next_s <= pixel_address + 1 when pixel_address /= maxpixel_s else -- index za ekran
-						  conv_std_logic_vector(0, 20);
-				
-  pixel_we <='1';
   
-  pixel_value <= x"ffffffff" when pixel_address > 100*20 + 4 +offset_s and pixel_address < 101*20-13 +offset_s else
-					  x"ffffffff" when pixel_address > 101*20 + 4 +offset_s and pixel_address < 102*20-13 +offset_s else
-					  x"ffffffff" when pixel_address > 102*20 + 4 +offset_s and pixel_address < 103*20-13 +offset_s else
-					  x"ffffffff" when pixel_address > 103*20 + 4 +offset_s and pixel_address < 104*20-13 +offset_s else
-					  x"ffffffff" when pixel_address > 104*20 + 4 +offset_s and pixel_address < 105*20-13 +offset_s else
-					  x"ffffffff" when pixel_address > 105*20 + 4 +offset_s and pixel_address < 106*20-13 +offset_s else
-					  x"ffffffff" when pixel_address > 106*20 + 4 +offset_s and pixel_address < 107*20-13 +offset_s else
-					  x"ffffffff" when pixel_address > 107*20 + 4 +offset_s and pixel_address < 108*20-13 +offset_s else
-					  x"00000000";
+  pixel_address <= unit_addr(19 downto 0) when pixel_we = '1' else conv_std_logic_vector(0, 20);
+  pixel_value <= Bus2Ip_Data when pixel_we = '1' else conv_std_logic_vector(0, 32);
+  
   ------------------------------------------
   -- Example code to read/write user logic slave model s/w accessible registers
   -- 
@@ -545,15 +490,34 @@ begin
     if Bus2IP_Clk'event and Bus2IP_Clk = '1' then
       if Bus2IP_Resetn = '0' then
         slv_reg0 <= (others => '0');
-      else
+		  slv_reg1 <= (others => '0');
+		  slv_reg2 <= (others => '0');
+		  slv_reg3 <= (others => '0');
+		  slv_reg4 <= (others => '0');
+		  slv_reg5 <= (others => '0');
+		  slv_reg6 <= (others => '0');
+      elsif reg_we='1' then
         case slv_reg_write_sel is
-          when "1" =>
-            for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
-              if ( Bus2IP_BE(byte_index) = '1' ) then
-                slv_reg0(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
-              end if;
-            end loop;
-          when others => null;
+          when "000" =>
+--            for byte_index in 0 to (C_SLV_DWIDTH/8)-1 loop
+--              if ( Bus2IP_BE(byte_index) = '1' ) then
+--                slv_reg0(byte_index*8+7 downto byte_index*8) <= Bus2IP_Data(byte_index*8+7 downto byte_index*8);
+--              end if;
+--            end loop;
+						slv_reg0<=Bus2IP_Data(0 downto 0);
+			when "001" =>
+						slv_reg1<=Bus2IP_Data(1 downto 0);
+			when "010" =>
+						slv_reg2<=Bus2IP_Data(0 downto 0);
+			when "011" =>
+						slv_reg3<=Bus2IP_Data(3 downto 0);
+			when "100" =>
+						slv_reg4<=Bus2IP_Data(23 downto 0);
+			when "101" =>
+						slv_reg5<=Bus2IP_Data(23 downto 0);
+			when "110" =>
+						slv_reg6<=Bus2IP_Data(23 downto 0);
+			when others => null;
         end case;
       end if;
     end if;

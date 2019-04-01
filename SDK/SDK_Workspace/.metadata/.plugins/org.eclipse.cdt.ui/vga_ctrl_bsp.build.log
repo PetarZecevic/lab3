@@ -1,6 +1,6 @@
-12:20:39 **** Auto Build of project vga_ctrl_bsp ****
+10:55:31 **** Auto Build of project vga_ctrl_bsp ****
 make -k all 
 'Finished building libraries'
 
-12:20:39 Build Finished (took 76ms)
+10:55:31 Build Finished (took 72ms)
 
